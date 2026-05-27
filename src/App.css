@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+.reviews-track {
+	animation: reviews-scroll 35s linear infinite;
+}
+
+.reviews-marquee:hover .reviews-track {
+	animation-play-state: paused;
+}
+
+@keyframes reviews-scroll {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* Great Vibes on customer review quote text only */
+.review-script-text {
+	font-family: 'Great Vibes', cursive;
+	font-weight: 400;
+}
+
+.reviews-item .review-text {
+	background: rgba(0,0,0,0.55);
+	padding: 0.75rem 1rem;
+	border-radius: 0.5rem;
+}
+
+.reviews-item img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
