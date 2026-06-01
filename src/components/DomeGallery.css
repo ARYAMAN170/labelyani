@@ -1,0 +1,258 @@
+/* DomeGallery Component Styles */
+
+:root {
+  --radius: 600px;
+  --viewer-pad: 20px;
+  --overlay-blur-color: #120f17;
+  --tile-radius: 30px;
+  --enlarge-radius: 30px;
+  --image-filter: none;
+  --segments-x: 35;
+  --segments-y: 35;
+}
+
+body.dg-scroll-lock {
+  overflow: hidden;
+}
+
+.sphere-root {
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  position: relative;
+}
+
+.sphere-main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.stage {
+  width: 100%;
+  height: 100%;
+  perspective: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sphere {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--radius) * -1));
+}
+
+.item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--radius) * 2 * var(--item-size-x) / var(--segments-x));
+  height: calc(var(--radius) * 2 * var(--item-size-y) / var(--segments-y));
+  margin-left: calc(var(--radius) * -1 * var(--item-size-x) / var(--segments-x));
+  margin-top: calc(var(--radius) * -1 * var(--item-size-y) / var(--segments-y));
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--offset-x) * 360deg / var(--segments-x))) rotateX(calc((0deg - var(--offset-y)) * 360deg / var(--segments-y))) translateZ(var(--radius));
+  transition: transform 400ms ease-out;
+}
+
+.item[data-focused='true'] {
+  transform: rotateY(var(--rot-y-delta)) rotateX(var(--rot-x-delta));
+}
+
+.item__image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: var(--tile-radius);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 200ms ease;
+}
+
+.item__image:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+.item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: var(--image-filter);
+  transition: filter 200ms ease;
+}
+
+.item__image--reference {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: var(--tile-radius);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.overlay--blur {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    rgba(18, 15, 23, 0.4) 60%,
+    var(--overlay-blur-color) 100%
+  );
+  backdrop-filter: blur(8px);
+}
+
+.edge-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  pointer-events: none;
+  height: 80px;
+}
+
+.edge-fade--top {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.edge-fade--bottom {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.viewer {
+  position: absolute;
+  inset: var(--viewer-pad);
+  z-index: 25;
+  pointer-events: none;
+}
+
+.viewer .scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 29;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+[data-enlarging='true'] .viewer .scrim {
+  pointer-events: auto;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: var(--tile-radius);
+}
+
+.enlarge {
+  position: absolute;
+  border-radius: var(--enlarge-radius);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.enlarge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: var(--image-filter);
+}
+
+.enlarge-closing {
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --radius: 400px;
+    --segments-x: 28;
+    --segments-y: 28;
+  }
+
+  .item__image {
+    border-radius: calc(var(--tile-radius) * 0.8);
+  }
+
+  .edge-fade {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --radius: 250px;
+    --segments-x: 20;
+    --segments-y: 20;
+  }
+
+  .item__image {
+    border-radius: calc(var(--tile-radius) * 0.6);
+  }
+
+  .edge-fade {
+    height: 40px;
+  }
+
+  .viewer {
+    inset: calc(var(--viewer-pad) * 0.5);
+  }
+}
+
+/* Accessibility */
+.item__image:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.sphere-root[data-enlarging='true'] {
+  overflow: hidden;
+}
+
+/* Smooth transitions for image loading */
+.item__image img {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .item__image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .item__image:active {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+}
