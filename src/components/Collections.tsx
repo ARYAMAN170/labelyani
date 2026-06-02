@@ -24,7 +24,7 @@ export default function Collections() {
 
   return (
     <section id="collections" className="bg-slate-950">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0">
+      <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-0">
           {collections.map((collection) => (
             <div 
               key={collection.id}

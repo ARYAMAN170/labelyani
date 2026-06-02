@@ -24,7 +24,7 @@ export default function Menswear() {
 
   return (
     <section id="menswear" className="bg-slate-950">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0">
+      <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-0">
           {menswearItems.map((item) => (
             <div 
               key={item.id}
