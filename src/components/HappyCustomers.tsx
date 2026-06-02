@@ -1,6 +1,6 @@
 import DomeGallery from './DomeGallery'
 
-export default function CustomerReviews() {
+export default function HappyCustomers() {
   const kurtiImages = [
     { src: '/cyan-frock.avif', alt: 'Cyan Frock' },
     { src: '/jacket-men.avif', alt: 'Jacket for Men' },
@@ -28,11 +28,11 @@ export default function CustomerReviews() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center space-y-3">
           <p className="text-amber-400 text-xs tracking-[0.35em] uppercase">@labelyani</p>
-          <h2 className="text-white review-script-text text-4xl md:text-5xl font-light tracking-tight">
-            Customer Reviews
+          <h2 className="text-white text-4xl md:text-5xl font-light tracking-tight">
+            The Labelyani Muse
           </h2>
           <p className="mx-auto max-w-2xl text-slate-400 text-sm md:text-base">
-            Real words from customers who wore the collection and made it their own.
+            Couture brought to life. A curated look at our clients celebrating their most cherished moments in Labelyani.
           </p>
         </div>
       </div>

@@ -21,7 +21,7 @@ export default function Footer() {
                   <path d="M23 3a10.9 10.9 0 11-13.18 2.892l4.242 4.242a5 5 0 1-6.065 6.065L6.9 19.01A9.959 9.959 0 0123 3z"/>
                 </svg>
               </a>
-              <a href="#" className="text-slate-400 hover:text-amber-600 transition">
+              <a href="https://www.instagram.com/labelyani" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-amber-600 transition">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.322a1.44 1.44 0 110 2.881 1.44 1.44 0 010-2.881z"/>
                 </svg>
@@ -66,7 +66,7 @@ export default function Footer() {
             <ul className="space-y-3 text-slate-400 text-sm">
               <li className="flex gap-2">
                 <span className="text-amber-600">📞</span>
-                <span>+91 (980) 123-4567</span>
+                <span>8959242002</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-amber-600">✉️</span>
@@ -74,7 +74,7 @@ export default function Footer() {
               </li>
               <li className="flex gap-2">
                 <span className="text-amber-600">📍</span>
-                <span>Delhi, India</span>
+                <span>Shop no. 8, U.S. Plaza, opposite Old High Court Road, Maina Wali Gali, Dal Bazaar, Lashkar, Gwalior, Madhya Pradesh 474009</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-amber-600">🕐</span>

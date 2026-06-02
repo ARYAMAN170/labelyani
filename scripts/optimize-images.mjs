@@ -6,14 +6,8 @@ const projectRoot = process.cwd()
 const publicDir = path.join(projectRoot, 'public')
 
 const targets = [
-  'lehenga-orange.JPG',
-  'cyan-frock.JPG',
-  'yellow-lehenga.JPG',
-  'purple-lehenga.JPG',
-  'sherwani-men.JPG',
-  'jacket-men.JPG',
-  'orange-lehenga-pair.jpg',
-  'yellow-kurta-men.jpg'
+  'IMG_0009.JPG',
+  
 ]
 
 const formatBytes = (bytes) => {

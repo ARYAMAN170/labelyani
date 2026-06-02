@@ -18,7 +18,7 @@ export default function Menswear() {
     {
       id: 4,
       name: 'KURTA SETS',
-      image: '/yellow-kurta-men.avif'
+      image: '/EAC86F8E-06A3-44D2-B06B-7B06BD80284C copy.JPG'
     }
   ]
 

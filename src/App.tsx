@@ -5,27 +5,24 @@ import Collections from './components/Collections'
 import BridalWear from './components/BridalWear'
 import Menswear from './components/Menswear'
 import AfterMensHero from './components/AfterMensHero'
-import CustomerReviews from './components/CustomerReviews'
-import About from './components/About'
-import Contact from './components/Contact'
+import HappyCustomers from './components/HappyCustomers'
 import Footer from './components/Footer'
-
+import InstagramFeed from './components/InstagramFeed'
 function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-[#F8E7F6] text-black">
       <Navigation />
       <Hero />
       <Collections />
       <BridalWear />
       <Menswear />
       <AfterMensHero />
-      <CustomerReviews />
-      <About />
-      <Contact />
+      <HappyCustomers />
+      <InstagramFeed />
       <Footer />
 
       <a
-        href="https://wa.me/919801234567"
+        href="https://wa.me/918959242002?text=Hello%20Label%20Yani!%20I%20have%20a%20query%20regarding%20your%20collection."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

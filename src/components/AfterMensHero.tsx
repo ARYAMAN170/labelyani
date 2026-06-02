@@ -4,7 +4,12 @@ export default function AfterMensHero() {
       <img
         src="/orange-lehenga-pair.avif"
         alt="Labelyani after mens hero"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 hidden h-full w-full object-cover sm:block"
+      />
+      <img
+        src="/bridal-mobile-view.JPG"
+        alt="Labelyani after mens hero"
+        className="absolute inset-0 block h-full w-full object-cover sm:hidden"
       />
 
       <div className="absolute inset-0 bg-black/18"></div>
