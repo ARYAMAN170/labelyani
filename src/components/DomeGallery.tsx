@@ -353,8 +353,9 @@ export default function DomeGallery({
 
         const evt = event as PointerEvent;
         pointerTypeRef.current = (evt.pointerType as any) || 'mouse';
-        if (pointerTypeRef.current === 'touch') evt.preventDefault();
-        if (pointerTypeRef.current === 'touch') lockScroll();
+        
+        // NO preventDefault or lockScroll here to allow browser scroll intent
+
         draggingRef.current = true;
         cancelTapRef.current = false;
         movedRef.current = false;
@@ -373,25 +374,26 @@ export default function DomeGallery({
 
         if (!movedRef.current) {
           const dist2 = dxTotal * dxTotal + dyTotal * dyTotal;
-          if (dist2 > 16) { // User has moved ~4 pixels
+          if (dist2 > 16) { 
             
             // INTENT DETECTOR
             if (pointerTypeRef.current === 'touch' && Math.abs(dyTotal) > Math.abs(dxTotal)) {
-              cancel(); 
+              cancel(); // Abort the gallery drag
               draggingRef.current = false;
-              return;
+              return; // Let the browser scroll vertically natively!
             }
 
             movedRef.current = true;
           } else if (!last) { 
-            // FIXED: If they haven't moved past 4px, wait. 
-            // BUT if 'last' is true (they lifted their finger), let the code continue so it can register the tap!
+            // Wait for 4px of movement, unless they lifted their finger (Tap)
             return;
           }
         }
 
-        // Only prevent default on touch devices if we've established a horizontal drag intent
-        if (pointerTypeRef.current === 'touch' && evt.cancelable) evt.preventDefault();
+        // Only prevent default on touch devices if we've established a HORIZONTAL drag intent
+        if (pointerTypeRef.current === 'touch' && evt.cancelable && !canceled) {
+          evt.preventDefault();
+        }
 
         const nextX = clamp(
           startRotRef.current.x - dyTotal / dragSensitivity,
@@ -454,7 +456,11 @@ export default function DomeGallery({
         }
       }
     },
-    { target: mainRef, eventOptions: { passive: false } }
+    { 
+      target: mainRef, 
+      eventOptions: { passive: false },
+      // CRITICAL NEW ADDITION: This tells useGesture to stop hijacking vertical scrolls!
+    }
   );
 
   useEffect(() => {
@@ -711,6 +717,12 @@ export default function DomeGallery({
   }, []);
 
   const cssStyles = `
+    /* ADD THIS CLASS FIRST */
+    .dg-allow-pan-y {
+      touch-action: pan-y !important;
+    }
+
+   
     .sphere-root {
       --radius: 520px;
       --viewer-pad: 72px;
@@ -820,7 +832,7 @@ export default function DomeGallery({
       >
         <main
           ref={mainRef}
-          className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
+          className="absolute inset-0 grid place-items-center overflow-hidden dg-allow-pan-y select-none bg-transparent"
           style={{
             touchAction: 'none',
             WebkitUserSelect: 'none'

@@ -2,10 +2,11 @@ export default function AfterMensHero() {
   return (
     <section id="after-mens-hero" className="relative h-screen overflow-hidden bg-slate-950">
       <img
-        src="/orange-lehenga-pair.avif"
-        alt="Labelyani after mens hero"
-        className="absolute inset-0 hidden h-full w-full object-cover sm:block"
-      />
+  src="/orange-lehenga-pair.avif"
+  alt="Labelyani after mens hero"
+  // Added object-top right after object-cover
+  className="absolute inset-0 hidden h-full w-full object-cover object-top sm:block"
+/>
       <img
         src="/bridal-mobile-view.JPG"
         alt="Labelyani after mens hero"

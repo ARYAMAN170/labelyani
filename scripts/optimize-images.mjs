@@ -6,7 +6,7 @@ const projectRoot = process.cwd()
 const publicDir = path.join(projectRoot, 'public')
 
 const targets = [
-  'IMG_0009.JPG',
+  'image.png',
   
 ]
 
