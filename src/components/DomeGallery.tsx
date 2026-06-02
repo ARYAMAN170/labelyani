@@ -156,8 +156,7 @@ export default function DomeGallery({
   openedImageHeight = '400px',
   imageBorderRadius = '30px',
   openedImageBorderRadius = '30px',
-  grayscale = true,
-  autoRotate = true
+  grayscale = true
 }: DomeGalleryProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
@@ -299,41 +298,12 @@ export default function DomeGallery({
     imageBorderRadius,
     openedImageBorderRadius,
     openedImageWidth,
-    openedImageHeight,
-    isMobile
+    openedImageHeight
   ]);
-
-  const autoRotateRef = useRef<number | null>(null);
 
   useEffect(() => {
     applyTransform(rotationRef.current.x, rotationRef.current.y);
   }, []);
-
-  const stopAutoRotate = useCallback(() => {
-    if (autoRotateRef.current) {
-      cancelAnimationFrame(autoRotateRef.current);
-      autoRotateRef.current = null;
-    }
-  }, []);
-
-  const startAutoRotate = useCallback(() => {
-    if (!autoRotate) return;
-    const step = () => {
-      if (!draggingRef.current && !focusedElRef.current) {
-        const nextY = wrapAngleSigned(rotationRef.current.y + 0.02);
-        rotationRef.current = { ...rotationRef.current, y: nextY };
-        applyTransform(rotationRef.current.x, nextY);
-      }
-      autoRotateRef.current = requestAnimationFrame(step);
-    };
-    stopAutoRotate();
-    autoRotateRef.current = requestAnimationFrame(step);
-  }, [autoRotate, stopAutoRotate]);
-
-  useEffect(() => {
-    startAutoRotate();
-    return () => stopAutoRotate();
-  }, [startAutoRotate, stopAutoRotate]);
 
   const stopInertia = useCallback(() => {
     if (inertiaRAF.current) {
@@ -383,9 +353,8 @@ export default function DomeGallery({
 
         const evt = event as PointerEvent;
         pointerTypeRef.current = (evt.pointerType as any) || 'mouse';
-        
-        // Removed aggressive preventDefault and lockScroll here to allow initial scroll intent
-
+        if (pointerTypeRef.current === 'touch') evt.preventDefault();
+        if (pointerTypeRef.current === 'touch') lockScroll();
         draggingRef.current = true;
         cancelTapRef.current = false;
         movedRef.current = false;
@@ -394,7 +363,6 @@ export default function DomeGallery({
         const potential = (evt.target as Element).closest?.('.item__image') as HTMLElement | null;
         tapTargetRef.current = potential || null;
       },
-      // Added `cancel` and `canceled` to destructuring parameters
       onDrag: ({ event, last, velocity: velArr = [0, 0], direction: dirArr = [0, 0], movement, cancel, canceled }) => {
         if (focusedElRef.current || !draggingRef.current || !startPosRef.current) return;
 
@@ -407,17 +375,17 @@ export default function DomeGallery({
           const dist2 = dxTotal * dxTotal + dyTotal * dyTotal;
           if (dist2 > 16) { // User has moved ~4 pixels
             
-            // INTENT DETECTOR: If the movement is primarily vertical, abort gallery rotation and let the browser scroll
+            // INTENT DETECTOR
             if (pointerTypeRef.current === 'touch' && Math.abs(dyTotal) > Math.abs(dxTotal)) {
               cancel(); 
               draggingRef.current = false;
               return;
             }
 
-            // Otherwise, it's a horizontal intent. 
             movedRef.current = true;
-          } else {
-            // Wait until intent is clear
+          } else if (!last) { 
+            // FIXED: If they haven't moved past 4px, wait. 
+            // BUT if 'last' is true (they lifted their finger), let the code continue so it can register the tap!
             return;
           }
         }
@@ -441,7 +409,6 @@ export default function DomeGallery({
         if (last) {
           draggingRef.current = false;
           
-          // If the gesture was canceled (due to vertical scrolling), skip inertia and tap logic
           if (canceled) {
             startPosRef.current = null;
             return;
@@ -839,7 +806,7 @@ export default function DomeGallery({
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
       <div
         ref={rootRef}
-        className="sphere-root relative w-full h-full "
+        className="sphere-root relative w-full h-full"
         style={
           {
             ['--segments-x' as any]: segments,
@@ -855,7 +822,7 @@ export default function DomeGallery({
           ref={mainRef}
           className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
           style={{
-            touchAction: 'pan-y', // <--- FIXED: Tells browser to allow vertical scrolling natively
+            touchAction: 'none',
             WebkitUserSelect: 'none'
           }}
         >

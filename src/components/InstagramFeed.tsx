@@ -1,9 +1,9 @@
 
 const instagramPosts = [
-  { id: 1, image: "/public/IMG_0036.avif", link: "https://instagram.com/labelyani", likes: "1.2k", comments: "48" },
-  { id: 2, image: "/public/IMG_0212.avif", link: "https://instagram.com/labelyani", likes: "856", comments: "21" },
-  { id: 3, image: "/public/IMG_0275.avif", link: "https://instagram.com/labelyani", likes: "2.4k", comments: "112" },
-  { id: 4, image: "/public/IMG_0294.avif", link: "https://instagram.com/labelyani", likes: "943", comments: "35" },
+  { id: 1, image: "/IMG_0036.avif", link: "https://instagram.com/labelyani", likes: "1.2k", comments: "48" },
+  { id: 2, image: "/IMG_0212.avif", link: "https://instagram.com/labelyani", likes: "856", comments: "21" },
+  { id: 3, image: "/IMG_0275.avif", link: "https://instagram.com/labelyani", likes: "2.4k", comments: "112" },
+  { id: 4, image: "/IMG_0294.avif", link: "https://instagram.com/labelyani", likes: "943", comments: "35" },
 ];
 
 export default function InstagramFeed() {
@@ -13,7 +13,7 @@ export default function InstagramFeed() {
       {/* 1. Placeholder for your saved Instagram Typography Logo */}
       <div className="mb-10 flex justify-center px-4 w-full max-w-md">
         <img 
-          src="public\insta.png" /* <-- UPDATE THIS TO YOUR SAVED LOGO PATH */
+          src="\insta.png" /* <-- UPDATE THIS TO YOUR SAVED LOGO PATH */
           alt="Labelyani Instagram" 
           className="w-full h-auto max-h-24 md:max-h-32 object-contain " 
         />
