@@ -1,9 +1,9 @@
 
 const instagramPosts = [
-  { id: 1, image: "/public/IMG_0036.JPG", link: "https://instagram.com/labelyani", likes: "1.2k", comments: "48" },
-  { id: 2, image: "/public/IMG_0212.JPG", link: "https://instagram.com/labelyani", likes: "856", comments: "21" },
-  { id: 3, image: "/public/IMG_0275.JPG", link: "https://instagram.com/labelyani", likes: "2.4k", comments: "112" },
-  { id: 4, image: "/public/IMG_0294.JPG", link: "https://instagram.com/labelyani", likes: "943", comments: "35" },
+  { id: 1, image: "/public/IMG_0036.avif", link: "https://instagram.com/labelyani", likes: "1.2k", comments: "48" },
+  { id: 2, image: "/public/IMG_0212.avif", link: "https://instagram.com/labelyani", likes: "856", comments: "21" },
+  { id: 3, image: "/public/IMG_0275.avif", link: "https://instagram.com/labelyani", likes: "2.4k", comments: "112" },
+  { id: 4, image: "/public/IMG_0294.avif", link: "https://instagram.com/labelyani", likes: "943", comments: "35" },
 ];
 
 export default function InstagramFeed() {
