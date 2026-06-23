@@ -23,24 +23,25 @@ export default function Menswear() {
   ]
 
   return (
-    <section id="menswear" className="bg-slate-950">
-      <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-0">
+    <section id="menswear" className="bg-purple-200 py-16 px-4 md:px-8 max-w-[1600px] mx-auto">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {menswearItems.map((item) => (
             <div 
               key={item.id}
-              className="group relative h-[72vh] md:h-[70vh] xl:h-[80vh] overflow-hidden cursor-pointer"
+              className="group cursor-pointer flex flex-col items-center"
             >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
+              {/* Image Container */}
+              <div className="relative w-full aspect-[3/4] overflow-hidden mb-5">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
 
-              <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition"></div>
-              <div className="absolute inset-0 bg-linear-to-t from-black/72 via-black/10 to-transparent"></div>
-
-              <div className="absolute inset-x-0 bottom-0 p-6 text-center">
-                <h3 className="text-white text-sm md:text-[15px] tracking-[0.28em] font-light">
+              {/* Text Container */}
+              <div className="text-center">
+                <h3 className="text-[#333333] text-xs md:text-sm tracking-[0.15em] font-light uppercase border-b border-gray-400 pb-1.5 inline-block transition-colors duration-300 group-hover:border-gray-800">
                   {item.name}
                 </h3>
               </div>

@@ -24,7 +24,7 @@ export default function HappyCustomers() {
   ]
 
   return (
-    <section className="bg-slate-950 py-20">
+    <section className="bg-gray-900 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center space-y-3">
           <p className="text-amber-400 text-xs tracking-[0.35em] uppercase">@labelyani</p>
@@ -49,6 +49,7 @@ export default function HappyCustomers() {
           imageBorderRadius="20px"
           openedImageBorderRadius="20px"
           openedImageWidth="300px"
+          autoRotate={true}
           openedImageHeight="auto"
         />
       </div>

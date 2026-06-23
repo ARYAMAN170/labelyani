@@ -22,7 +22,7 @@ export default function Hero() {
         poster="/aftermen hero image.webp"
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/herovideo.optimized.mp4" type="video/mp4" />
+        <source src="/heroovid.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center px-4">
