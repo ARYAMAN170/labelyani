@@ -1,19 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 
 export default function BridalWear() {
   const desktopVideoRef = useRef<HTMLVideoElement | null>(null)
   const mobileVideoRef = useRef<HTMLVideoElement | null>(null)
-  
-  const [isMuted, setIsMuted] = useState(true)
 
-  useEffect(() => {
-    if (desktopVideoRef.current) {
-      desktopVideoRef.current.muted = isMuted
-    }
-    if (mobileVideoRef.current) {
-      mobileVideoRef.current.muted = isMuted
-    }
-  }, [isMuted])
 
   return (
     <section id="bridalwear" className="relative h-screen overflow-hidden bg-black">
