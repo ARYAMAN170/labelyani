@@ -904,13 +904,13 @@ export default function DomeGallery({
               ))}
             </div>
           </div>
-
-          <div
+          {/* {radial dark overlay to fade out edges of the gallery and focus on the center image} */}
+          {/* <div
             className="absolute inset-0 m-auto z-[3] pointer-events-none"
             style={{
               backgroundImage: `radial-gradient(rgba(235, 235, 235, 0) 65%, var(--overlay-blur-color, ${overlayBlurColor}) 100%)`
             }}
-          />
+          /> */}
 
           <div
             className="absolute inset-0 m-auto z-[3] pointer-events-none"
@@ -920,8 +920,8 @@ export default function DomeGallery({
               backdropFilter: 'blur(3px)'
             }}
           />
-
-          <div
+          {/* vignette */}
+          {/* <div
             className="absolute left-0 right-0 top-0 h-[120px] z-[5] pointer-events-none rotate-180"
             style={{
               background: `linear-gradient(to bottom, transparent, var(--overlay-blur-color, ${overlayBlurColor}))`
@@ -932,7 +932,7 @@ export default function DomeGallery({
             style={{
               background: `linear-gradient(to bottom, transparent, var(--overlay-blur-color, ${overlayBlurColor}))`
             }}
-          />
+          /> */}
 
           <div
             ref={viewerRef}

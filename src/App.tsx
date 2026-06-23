@@ -10,7 +10,7 @@ import Footer from './components/Footer'
 import InstagramFeed from './components/InstagramFeed'
 function App() {
   return (
-    <div className="min-h-screen bg-[#F8E7F6] text-black">
+    <div className="min-h-screen bg-purple-200 text-black">
       <Navigation />
       <Hero />
       <Collections />

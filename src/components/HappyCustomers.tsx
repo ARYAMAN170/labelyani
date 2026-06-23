@@ -24,18 +24,25 @@ export default function HappyCustomers() {
   ]
 
   return (
-    <section className="bg-gray-900 py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center space-y-3">
-          <p className="text-amber-400 text-xs tracking-[0.35em] uppercase">@labelyani</p>
-          <h2 className="text-white text-4xl md:text-5xl font-light tracking-tight">
-            The Labelyani Muse
-          </h2>
-          <p className="mx-auto max-w-2xl text-slate-400 text-sm md:text-base">
-            Couture brought to life. A curated look at our clients celebrating their most cherished moments in Labelyani.
-          </p>
-        </div>
-      </div>
+    <section className="bg-purple-200 py-20">
+     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div className="mb-10 text-center space-y-3">
+    {/* Darkened the amber and added font-medium for better legibility at small sizes */}
+    <p className="text-amber-600 font-medium text-xs tracking-[0.35em] uppercase">
+      @labelyani
+    </p>
+    
+    {/* Swapped white for a deep, elegant slate/charcoal color */}
+    <h2 className="text-slate-800 text-4xl md:text-5xl font-light tracking-tight">
+      The Labelyani Muse
+    </h2>
+    
+    {/* Swapped light slate for a darker slate to ensure readable contrast */}
+    <p className="mx-auto max-w-2xl text-slate-600 text-sm md:text-base">
+      Couture brought to life. A curated look at our clients celebrating their most cherished moments in Labelyani.
+    </p>
+  </div>
+</div>
 
       <div style={{ height: '650px', width: '100%', marginTop: '20px' }}>
         <DomeGallery
