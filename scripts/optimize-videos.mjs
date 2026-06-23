@@ -8,7 +8,7 @@ const publicDir = path.join(projectRoot, 'public')
 
 const targets = [
   
-  { input: 'bridal-vertical.MP4', maxWidth: 1920, crf: 29 }
+  { input: 'heroovid.MP4', maxWidth: 1920, crf: 29 }
 ]
 
 const formatBytes = (bytes) => {
